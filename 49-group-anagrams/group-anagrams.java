@@ -32,7 +32,14 @@ class Solution {
         for(char ch :str.toCharArray()){
             ++freq[ch-'a'];
         }
-        String key=Arrays.toString(freq);
+
+         StringBuilder keyBuilder = new StringBuilder();
+
+            for (int count : freq) {
+                keyBuilder.append('#').append(count);
+            }
+         
+         String key = keyBuilder.toString();
 
         if(map.containsKey(key)){
            map.get(key).add(str);
