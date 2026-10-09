@@ -16,9 +16,9 @@ class Solution {
                  int count=1;
               while(set.contains(num+1)){
                    ++count;
-                   longest=Math.max(count,longest);
                    ++num;
               }
+               longest=Math.max(count,longest);
             }
         }
 
