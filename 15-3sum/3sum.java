@@ -1,39 +1,40 @@
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
-        int n=nums.length;
-        Arrays.sort(nums);
-        List<List<Integer>> ans= new ArrayList<>();
 
-        for(int i=0;i<=n-3;++i){
-          int l=i+1;
-          int h=n-1;
+     List<List<Integer>> ans= new ArrayList<>();
+     Arrays.sort(nums);
+      
+      for(int i=0;i<=nums.length-3;++i){
+       
+       int low=i+1;
+       int high=nums.length-1;
 
-          while(l<h){
-             if(nums[i]+nums[l]+nums[h]==0){
-                 ans.add(Arrays.asList(nums[i], nums[l], nums[h]));
-                while(l<h && nums[l]==nums[l+1]){
-                      ++l;
+       while(low<high){
+           
+           if(nums[i]+nums[low]+nums[high]==0){
+                ans.add(Arrays.asList(nums[i],nums[low],nums[high]));
+
+                while(low<high && nums[low]==nums[low+1]){
+                    ++low;
                 }
-                ++l;
+                ++low;
 
-                while(l<h && nums[h-1]==nums[h]){
-                      --h;
+                while(low<high && nums[high]==nums[high-1]){
+                    --high;
                 }
-                --h;
-               
-             }else if(nums[i]+nums[l]+nums[h]>0){
-                --h;
-             }else{
-                ++l;
-             }
-          }
+                --high;
+                
+           }else if(nums[i]+nums[low]+nums[high]>0){
+            --high;
+           }else{
+            ++low;
+           }
+       }
 
-          while(i<n-3 && nums[i+1]==nums[i]){
-            ++i;
-          }
-
-        }
-
-        return ans;
+       while(i<=nums.length-3 && nums[i]==nums[i+1]){
+          ++i;
+       }
+      }
+        return ans;   
     }
 }
